@@ -1,0 +1,26 @@
+﻿
+@{
+    List<Song> songs = (List<Song>)ViewData["songs"];
+    List<Genre> genre = (List<Genre>)ViewData["genre"];
+}
+
+<form action="/Search/Duration" method="post">
+    Minute: <input type="number" name="mins" /><br />
+    Second: <input type="number" name="secs" /><br />
+    <input type="submit"><br />
+    <table>
+        <tr>
+            <th>Title</th>
+            <th>Length</th>
+            <th>Genre</th>
+        </tr>
+        @for (int i = 0; i < genre.Count; i++)
+        {
+            <tr>
+                <td>@songs[i].Title</td>
+                <td>@songs[i].Mins:@songs[i].Secs</td>
+                <td>@genre[i].Name</td>
+            </tr>
+        }
+    </table>
+</form>
